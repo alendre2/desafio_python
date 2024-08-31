@@ -5,16 +5,19 @@ hitorico_saque = []
 hitorico_deposito = []
 
 def depositar(deposito):
+    print("_____________________________________________________________")
     global saldo
     if deposito <= 0:
         print("Operação inválida: Depósito não pode ser inferior ou igual a 0")
     else:
         saldo += deposito
-        print(f"Deposito de {deposito:.2f} realizado com sucesso!")
+        print(f"Deposito de R$ {deposito:.2f} realizado com sucesso!")
         hitorico_deposito.append(deposito)
+    print("____________________________________________________________")
 
 
 def saque_dinheiro(saque):
+    print("_________________________________________________________")
     global LIMITE_SAQUE
     global saldo
     global limite
@@ -28,35 +31,39 @@ def saque_dinheiro(saque):
     else:
         saldo -= saque
         limite += 1
-        print(f"Saque de {saque} realizado com sucesso!")
+        print(f"Saque de R$ {saque} realizado com sucesso!")
         hitorico_saque.append(saque)
+    print("___________________________________________________________")
 
 
 def extrato():
+    print("____________________________")
     global saldo
     print("Extrato Geral:")
     print("Deposito:")
     for deposito in hitorico_deposito:
         print(f"R$ {deposito:.2f}")
-    
+    print("\n")
     print("Saques:")
     for saque in hitorico_saque:
         print(f"R$ {saque:.2f}")    
-
+    print("\n")
     print(f"Saldo Atual: {saldo:.2f} ")
+    print("____________________________")
 
 
-print(""" 
-| Digite uma opção |
+
+
+while True:
+    print(""" 
 |    [1] Depositar |
 |    [2] Sacar     |
 |    [3] Extrato   |
 |    [4] Sair      |
 ####################      
 """)
-
-while True:
-    opcao = int(input("Digite uma opção: "))
+    opcao = int(input("Digite uma opção:"))
+    print("\n")
 
     if opcao == 1:
         deposito = float(input("Digite o valor do depósito: "))
